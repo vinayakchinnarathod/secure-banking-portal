@@ -16,7 +16,8 @@ import java.io.IOException;
 @Service
 public class AutoKYCService {
 
-    private final String AUTO_KYC_BASE_URL = "http://localhost:8000/api";
+    @Value("${autokyc.base-url:http://localhost:8000/api}")
+    private String AUTO_KYC_BASE_URL;
     private final RestTemplate restTemplate;
     private final ObjectMapper objectMapper;
 

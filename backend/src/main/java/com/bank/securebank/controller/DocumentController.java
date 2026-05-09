@@ -298,7 +298,7 @@ public class DocumentController {
                 new HttpEntity<>(body, headers);
             
             // Call Python AI service
-            String pythonServiceUrl = "http://localhost:8000/api/upload-document";
+            String pythonServiceUrl = autokycConfig.getBaseUrl() + "/upload-document";
             ResponseEntity<Map> aiResponse = restTemplate.postForEntity(pythonServiceUrl, requestEntity, Map.class);
             
             if (aiResponse.getStatusCode().is2xxSuccessful() && aiResponse.getBody() != null) {

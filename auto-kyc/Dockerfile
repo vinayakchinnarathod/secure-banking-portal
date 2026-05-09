@@ -26,7 +26,7 @@ RUN pip install --upgrade pip \
 COPY . .
 
 # Expose the port FastAPI will run on
-EXPOSE 80
+EXPOSE 8000
 
 # Run the application
-CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "api_simple:app", "--host", "0.0.0.0", "--port", "8000"]

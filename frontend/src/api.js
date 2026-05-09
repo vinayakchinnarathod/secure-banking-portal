@@ -2,6 +2,11 @@ import axios from "axios";
 
 // Get the current host dynamically
 const getBaseURL = () => {
+  // Check for production environment variable first
+  if (process.env.REACT_APP_API_URL) {
+    return process.env.REACT_APP_API_URL;
+  }
+  
   const hostname = window.location.hostname;
   const protocol = window.location.protocol;
   
@@ -10,7 +15,8 @@ const getBaseURL = () => {
     return `${protocol}//${hostname}:8080/api`;
   }
   
-  // For mobile access via IP or ngrok
+  // For production deployment, use the configured backend URL
+  // This should be set in environment variables
   return `${protocol}//${hostname}:8080/api`;
 };
 
