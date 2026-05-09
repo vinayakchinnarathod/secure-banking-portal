@@ -3,6 +3,7 @@ package com.bank.securebank.controller;
 import com.bank.securebank.model.Document;
 import com.bank.securebank.repository.DocumentRepository;
 import com.bank.securebank.service.FileStorageService;
+import com.bank.securebank.config.AutoKYCConfig;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
@@ -35,6 +36,9 @@ public class DocumentController {
 
     @Autowired
     private FileStorageService fileStorageService;
+
+    @Autowired
+    private AutoKYCConfig autokycConfig;
 
     @PostMapping("/upload")
     @PreAuthorize("hasRole('USER')")
