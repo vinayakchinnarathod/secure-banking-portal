@@ -2,6 +2,7 @@ package com.bank.securebank.security;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
@@ -13,7 +14,8 @@ import java.util.Collection;
 @Component
 public class JwtUtil {
 
-    private final String SECRET = "securebanksecurebanksecurebanksecurebank";
+    @Value("${jwt.secret:securebanksecurebanksecurebanksecurebank}")
+    private String SECRET;
     private final long EXPIRATION = 1000 * 60 * 60; // 1 hour
 
     private Key getSignKey() {
